@@ -13,7 +13,7 @@ import pagesPOM_ObjectRepo.SelectedProductPage;
 import test_Utility.Sorting_Utility;
 /**
  * @author Dibyendu-(DibyenduGithub) Amazon EndtoEnd(Upto AddedCart
- *         Functionality) Testing for a 'Non-Registered User'.s
+ *         Functionality) Testing for a 'Non-Registered User'.Features - DataDriven from External Wishlist with specific Quantity for each item.
  */
 @Test(dataProviderClass = Excel_Utilites.class, dataProvider = "testData")
 public class Amazon_1 extends Base {
