@@ -3,11 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test_Cases.Amazon_1">
+      <class name="test_Cases.Sort_Items_Test">
         <methods>
-          <include name="AmazonEndtoEnd"/>
+          <include name="sortList"/>
         </methods>
-      </class> <!-- test_Cases.Amazon_1 -->
+      </class> <!-- test_Cases.Sort_Items_Test -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

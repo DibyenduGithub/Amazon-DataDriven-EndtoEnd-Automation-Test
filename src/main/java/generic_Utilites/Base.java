@@ -25,6 +25,7 @@ public class Base {
 			co.addArguments("--remote-allow-origins=*");
 			driver = new ChromeDriver(co);
 			driver.get(URL);
+			driver.navigate().refresh();
 		} else if (BROWSER.equalsIgnoreCase("firefox")) {
 			driver = new FirefoxDriver();
 			driver.get(URL);
@@ -38,6 +39,7 @@ public class Base {
 			driver.get(URL);
 		}
 		driver.manage().window().maximize();
+		driver.navigate().refresh();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 		return driver;
 	}

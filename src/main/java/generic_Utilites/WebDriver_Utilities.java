@@ -1,11 +1,12 @@
 package generic_Utilites;
 
 import java.time.Duration;
+import java.util.Iterator;
+import java.util.Set;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 public class WebDriver_Utilities extends Base {
 
@@ -16,38 +17,38 @@ public class WebDriver_Utilities extends Base {
 
 	public void ImplicitWait(WebDriver wdriver) {
 
-		wdriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+		wdriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
 
-	
-	
-	public int getXAxis(WebDriver driver,WebElement scrollupto)
+
+	public void ElementClick(WebElement ele)
 	{
-		 Point scrollLocation = scrollupto.getLocation();
-		 int x=scrollLocation.getX();
-		 return x;
-	
-	}
-	public int getYAxix(WebDriver driver,WebElement scrollupto)
-	{
-		 Point scrollLocation = scrollupto.getLocation();
-		 int y=scrollLocation.getY();
-		 return y;
-	
+		Actions ac=new Actions(driver);
+		ac.moveToElement(ele).click().build().perform();
 	}
 	
-	public void JavaScriptScroll(int x,int y,WebDriver driver)
+	public void ProductWindowSwitch(WebDriver driver) throws Throwable
 	{
-		JavascriptExecutor js= (JavascriptExecutor)driver;
-	    js.executeScript("window.scrollBy("+x+","+y+")");
+		Set<String> all = driver.getWindowHandles();
+		Iterator<String> it = all.iterator();
+        String ParentTitle = driver.getTitle();
+		@SuppressWarnings("unused")
+		String ParentWindow = it.next();
+		System.out.println(ParentTitle);
+		Thread.sleep(2000);
+		String ChildWindow = it.next();
+		driver.switchTo().window(ChildWindow);
+
+	}
+	public void ParentWindowSwitch(WebDriver driver)
+	{
+		Set<String> all = driver.getWindowHandles();
+		Iterator<String> it = all.iterator();
+		String ParentWindow = it.next();
+		driver.switchTo().window(ParentWindow);
 	}
 	
-	public void NormalScroll(WebDriver driver)
-	{
-		JavascriptExecutor jse= (JavascriptExecutor)driver;
-		 jse.executeScript("window.scrollBy(0,250)","");
-	}
-	
+		
 	
 
 }
